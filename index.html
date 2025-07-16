@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dear Junior</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(#0d0d1a, #1a1a40);
+      font-family: 'Comic Neue', cursive;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://i.ibb.co/fN9VqgR/stars-bg.gif') repeat;
+      opacity: 0.08;
+      z-index: 0;
+    }
+
+    section {
+      padding: 60px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .typing {
+      font-size: 24px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      width: 0;
+      margin: 20px auto;
+      animation: typing 4s steps(40, end) forwards, blink 0.8s step-end infinite;
+      max-width: 90%;
+    }
+
+    @keyframes typing {
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .birthday-heading {
+      font-size: 36px;
+      color: #ffd700;
+      animation: zoomFadeIn 1s ease-in-out 1.2s forwards;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    @keyframes zoomFadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .happy {
+      border: 2px dashed hotpink;
+      border-radius: 15px;
+      padding: 25px 20px;
+      margin: 0 auto;
+      max-width: 650px;
+      background: #141432;
+      box-shadow: 0 0 30px #ff66b240;
+    }
+
+    .quote-text {
+      color: #8ef09e;
+      font-size: 18px;
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeIn 1.5s ease 2s forwards;
+    }
+
+    .flaws {
+      color: pink;
+      font-size: 19px;
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeIn 1.8s ease 2.5s forwards;
+    }
+
+    .footer-text {
+      color: cyan;
+      margin-top: 20px;
+      font-size: 16px;
+      font-style: italic;
+      opacity: 0;
+      animation: fadeIn 2s ease 3s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .top-text {
+      font-style: italic;
+      font-size: 20px;
+    }
+
+    .cake-wrapper {
+      margin-top: 30px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .cake {
+      width: 100px;
+      height: 120px;
+      background: #ff66b2;
+      border-radius: 10px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 0 10px #ff66b2aa;
+    }
+
+    .candle {
+      width: 8px;
+      height: 25px;
+      background: #fff;
+      position: absolute;
+      top: -30px;
+      left: 46px;
+      border-radius: 2px;
+    }
+
+    .flame {
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      border-radius: 50%;
+      position: absolute;
+      top: -38px;
+      left: 45px;
+      animation: flicker 0.2s infinite alternate;
+      box-shadow: 0 0 10px yellow;
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    .flip-card {
+      background-color: transparent;
+      width: 300px;
+      height: 160px;
+      perspective: 1000px;
+      margin: 30px auto;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px #fff2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flip-card-front {
+      background: #ff66b2;
+      color: white;
+      font-size: 20px;
+    }
+
+    .flip-card-back {
+      background: #141432;
+      color: #8ef09e;
+      transform: rotateY(180deg);
+      font-style: italic;
+    }
+
+    .quote-slider {
+      max-width: 400px;
+      margin: 40px auto;
+      font-style: italic;
+      font-size: 18px;
+      color: #ffc;
+      position: relative;
+      min-height: 40px;
+    }
+
+    .quote {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      animation: quoteFade 12s infinite;
+    }
+
+    .quote:nth-child(2) { animation-delay: 4s; }
+    .quote:nth-child(3) { animation-delay: 8s; }
+
+    @keyframes quoteFade {
+      0%, 100% { opacity: 0; }
+      10%, 30% { opacity: 1; }
+    }
+
+    .star {
+      position: fixed;
+      top: -10px;
+      width: 2px;
+      height: 80px;
+      background: white;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<section>
+  <div class="top-text">Dear Oishe</div>
+  <div class="typing">Wishing You The Happiest Birthday Ever</div>
+</section>
+
+<section>
+  <div class="cake-wrapper">
+    <div class="cake">
+      <div class="candle"></div>
+      <div class="flame"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">💌 Tap to Open</div>
+      <div class="flip-card-back">You're special every day... but today is extra special.<br>~ From Senior Vaiya 💖</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="quote-slider">
+    <div class="quote">"You are the sparkle in my stars."</div>
+    <div class="quote">"Every moment with you is magical."</div>
+    <div class="quote">"Your smile makes the universe brighter."</div>
+  </div>
+</section>
+
+<section>
+  <div class="happy">
+    <div class="birthday-heading">Happy Birthday <br> Junior</div>
+    <div class="quote-text">
+      Make a list of your top priorities, then delete half of them <br>
+      and focus on what is lefts. Everyone is temporary.
+    </div>
+    <div class="flaws">You are more than your flaws.</div>
+    <div class="footer-text">~ Love from Senior Vaiya ~</div>
+  </div>
+</section>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2023/03/10/audio_4030c8098c.mp3" type="audio/mp3">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+  const duration = 8 * 1000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 80,
+      origin: { x: 0 },
+      colors: ['#ff66b2', '#ffd700', '#66ccff']
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 80,
+      origin: { x: 1 },
+      colors: ['#ff66b2', '#ffd700', '#66ccff']
+    });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+
+  // Falling stars
+  for (let i = 0; i < 15; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDuration = 2 + Math.random() * 3 + "s";
+    star.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(star);
+  }
+</script>
+</body>
+</html>
